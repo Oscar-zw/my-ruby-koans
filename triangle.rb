@@ -13,13 +13,23 @@
 # and
 #   about_triangle_project_2.rb
 #
-def triangle(*args)
+
+def triangle(a, b, c)
+  a, b, c = sides = [a, b, c].sort
+  raise TriangleError unless a > 0 and a + b > c
+  [:scalene, :isosceles, :equilateral][-sides.uniq.size]
+end
+
+def triangle2(*args)
+
   if equilateral?(args)
     :equilateral
   elsif isosceles?(args)
     :isosceles
   else
     :scalene
+  #else
+    #raise TriangleError
   end
 end
 
@@ -30,11 +40,10 @@ def equilateral?(elements)
 end
 
 def isosceles?(elements)
-  puts elements
   elements.uniq.length == 2
 end
 
 # Error class used in part 2.  No need to change this code.
 class TriangleError < StandardError
-  
+  "Im the triangle error equisde"
 end

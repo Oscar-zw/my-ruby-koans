@@ -36,8 +36,10 @@ class AboutSymbols < Neo::Koan
   in_ruby_version("mri") do
     RubyConstant = "What is the sound of one hand clapping?"
     def test_constants_become_symbols
+      
       all_symbols_as_strings = Symbol.all_symbols.map { |x| x.to_s }
 
+      #@_@ is false
       assert_equal true, all_symbols_as_strings.include?("test_user_defined_code_can_check_for_to_str")
     end
   end
